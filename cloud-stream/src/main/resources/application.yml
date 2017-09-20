@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    stream:
+      bindings:
+        input1:
+          destination: test1
+        input2:
+          destination: test2
+        output1:
+          destination: test1
+        output2:
+          destination: test2
