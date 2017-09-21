@@ -79,10 +79,9 @@ public class Application {
         KStream<String, String> newStream = stream.mapValues(String::toUpperCase)
                 .groupByKey()
                 .reduce((String value1, String value2) -> value1 + " *** " + value2,
-                        TimeWindows.of(1000), "windowStore")
+                        TimeWindows.of(2000), "windowStore")
                 .toStream()
-                .map((windowedId, value) -> new KeyValue<>(windowedId.key(), value))
-                .filter((i, s) -> s.length() > 40);
+                .map((windowedId, value) -> new KeyValue<>(windowedId.key(), value));
 
         newStream.to("streamingTopic2");
 //        newStream.print();

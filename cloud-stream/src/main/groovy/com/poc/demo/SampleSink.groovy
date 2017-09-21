@@ -11,7 +11,7 @@ import org.springframework.messaging.Message
 class SampleSink {
 
     @StreamListener(MultiInputSink.INPUT2)
-    synchronized void receive1(Message<String> message) {
+    synchronized void receive(Message<String> message) {
         def key = new String(message.headers[KafkaHeaders.RECEIVED_MESSAGE_KEY] as byte[], 'UTF-8')
         log.info("$key | ${message.payload}")
     }

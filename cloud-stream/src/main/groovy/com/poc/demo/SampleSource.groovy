@@ -17,7 +17,7 @@ class SampleSource {
 
     @Bean
     @InboundChannelAdapter(value = MultiOutputSource.OUTPUT1, poller = @Poller(fixedDelay = "500", maxMessagesPerPoll = "1"))
-    synchronized MessageSource<String> messageSource1() {
+    synchronized MessageSource<String> messageSource() {
         Faker fkr = new Faker()
         new MessageSource<String>() {
             Message<String> receive() {
